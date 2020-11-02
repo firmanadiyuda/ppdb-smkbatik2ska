@@ -47,10 +47,12 @@ Auth::routes(['register' => false]);
 
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
-// Route::get('migrate', function () {
-
-//     \Artisan::call('migrate:refresh --seed');
-
+// Route::get('storagelink', function () {
+//     \Artisan::call('storage:link');
 //     dd("Database migrated");
+// });
 
+// Route::get('migrate', function () {
+//     \Artisan::call('migrate:refresh --seed');
+//     dd("Database migrated");
 // });

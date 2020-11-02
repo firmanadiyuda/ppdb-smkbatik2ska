@@ -157,13 +157,18 @@
             </div>
 
               @endif
+
+            @if(!($pendaftar->status == 'Pengumuman' OR $pendaftar->status == 'Diterima' OR $pendaftar->status == 'Tidak Diterima'))
+              
               <a href="/cetak/{{$kode}}" class="btn btn-success mb-2" target="_blank">
                 <i class="fas fa-download"></i> &nbsp;
                 Cetak Formulir
               </a>
+              <hr>
+            @endif
             </div>
             
-            <hr> <br>
+            <br>
             <div class="text-center">
               Kode Login :
               <br>

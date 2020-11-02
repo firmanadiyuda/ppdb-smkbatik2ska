@@ -444,7 +444,7 @@
               </li> --}}
             </ul>
             <span class="copyright ml-auto my-auto mr-2">Copyright © 2020
-              <a href="https://instagram.com/firmanadiyuda" rel="nofollow">Firman Adiyuda</a>
+              <a href="http://semartech.net" rel="nofollow" target="_blank">Semartech</a>
             </span>
           </footer>
         </main>
