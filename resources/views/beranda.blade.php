@@ -41,7 +41,7 @@
           <div class="card-body">
             <form action="/cekstatus" method="GET">
               <div class="form-group">
-                <b><div style="font-size: 10pt;" class="text-primary">KODE PENDAFTARAN</div></b>
+                <b><div style="font-size: 10pt;" class="text-primary">KODE LOGIN</div></b>
                 <input type="text" class="form-control" name="kode" required>							
               </div>
 								<input type="submit" class="btn btn-primary btn-lg w-100" value="Cek Status">

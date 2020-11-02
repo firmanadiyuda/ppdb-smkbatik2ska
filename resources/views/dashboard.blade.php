@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Shards Dashboard Lite - Free Bootstrap Admin Template – DesignRevision</title>
+    <title>Dashboard PPDB Online</title>
     <meta name="description" content="A high-quality &amp; free Bootstrap admin dashboard template pack that comes with lots of templates and components.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
@@ -168,8 +168,8 @@
                   <div class="card-body p-0 d-flex">
                     <div class="d-flex flex-column m-auto">
                       <div class="stats-small__data text-center">
-                        <span class="stats-small__label text-uppercase text-warning">Sudah membayar</span>
-                        <h6 class="stats-small__value count my-3 text-warning">{{$totalPembayaran}}</h6>
+                        <span class="stats-small__label text-uppercase text-warning">Menunggu validasi</span>
+                        <h6 class="stats-small__value count my-3 text-warning">{{$totalMenungguValidasi}}</h6>
                       </div>
                       {{-- <div class="stats-small__data">
                         <span class="stats-small__percentage stats-small__percentage--increase">12.4%</span>
@@ -184,8 +184,8 @@
                   <div class="card-body p-0 d-flex">
                     <div class="d-flex flex-column m-auto">
                       <div class="stats-small__data text-center">
-                        <span class="stats-small__label text-uppercase text-info">Sudah Daftar Ulang</span>
-                        <h6 class="stats-small__value count my-3 text-info">{{$totalDaftarUlang}}</h6>
+                        <span class="stats-small__label text-uppercase text-info">Belum Daftar Ulang</span>
+                        <h6 class="stats-small__value count my-3 text-info">{{$totalBelumDaftarUlang}}</h6>
                       </div>
                       {{-- <div class="stats-small__data">
                         <span class="stats-small__percentage stats-small__percentage--decrease">3.8%</span>
@@ -200,8 +200,8 @@
                   <div class="card-body p-0 d-flex">
                     <div class="d-flex flex-column m-auto">
                       <div class="stats-small__data text-center">
-                        <span class="stats-small__label text-uppercase text-success">Lulus</span>
-                        <h6 class="stats-small__value count my-3 text-success">{{$totalLulus}}</h6>
+                        <span class="stats-small__label text-uppercase text-success">Diterima</span>
+                        <h6 class="stats-small__value count my-3 text-success">{{$totalDiterima}}</h6>
                       </div>
                       {{-- <div class="stats-small__data">
                         <span class="stats-small__percentage stats-small__percentage--increase">12.4%</span>
@@ -216,8 +216,8 @@
                   <div class="card-body p-0 d-flex">
                     <div class="d-flex flex-column m-auto">
                       <div class="stats-small__data text-center">
-                        <span class="stats-small__label text-uppercase text-danger">Tidak lulus</span>
-                        <h6 class="stats-small__value count my-3 text-danger">{{$totalTidakLulus}}</h6>
+                        <span class="stats-small__label text-uppercase text-danger">Tidak Diterima</span>
+                        <h6 class="stats-small__value count my-3 text-danger">{{$totalTidakDiterima}}</h6>
                       </div>
                       {{-- <div class="stats-small__data">
                         <span class="stats-small__percentage stats-small__percentage--decrease">2.4%</span>
@@ -227,6 +227,7 @@
                   </div>
                 </div>
               </div>
+              
             </div>
             <!-- End Small Stats Blocks -->
             <div class="row">
@@ -235,11 +236,17 @@
               <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
 
                 <div class="card card-small">
-                  <div class="card-header border-bottom">
+                  <div class="card-header bg-light border-bottom">
                       <div class="row">
-                        <div class="col-lg-8 col-sm-12">
+                        <div class="col-lg-2 col-sm-12">
                             <h6 class="m-0">Data Pendaftar</h6>
-                        </div>
+                          </div>
+                          <div class="col-lg-6 col-sm-12">
+                            <a href="/cetakexcel" class="btn btn-primary">
+                              <i class="fas fa-download"></i>
+                              Download Excel
+                            </a>
+                          </div>
                         <div class="col-lg-4 col-sm-12 text-right">
                             <form action="/cari" method="GET">
                                 <div class="form-group">
@@ -247,7 +254,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" name="search" placeholder="Masukkan kode pendaftaran" aria-label="Username" aria-describedby="basic-addon1">							
+                                        <input type="text" class="form-control" name="search" placeholder="Masukkan kode login" aria-label="Username" aria-describedby="basic-addon1">							
                                     </div>
                                 </div>
                             </form>
@@ -258,15 +265,32 @@
                     <ul class="list-group list-group-small list-group-flush">
                         @foreach ($pendaftar as $p)
                         <li class="list-group-item d-flex px-3">
-                            {{-- <span class="text-semibold text-fiord-blue my-auto" style="font-weight: 600">[ {{ Hashids::encode($p->id) }} ] &nbsp; </span> --}}
                             <span class="text-semibold text-fiord-blue my-auto"> {{ $p->nama_siswa }} </span> &nbsp;
-                            @if ($p->status == 'pembayaran')                            
-                                <span class="badge badge-outline-primary my-auto" style="font-size:8pt; max-height: 23px;">Pembayaran</span>
-                            @elseif ($p->status == 'daftar ulang')
-                                <span class="badge badge-outline-primary my-auto" style="font-size:8pt; max-height: 23px;">Daftar Ulang</span>
-                            @elseif ($p->status == 'pengumuman')
+                            @if ($p->status == 'Segera Melakukan Pembayaran')
+                                <span class="badge badge-outline-primary my-auto" style="font-size:8pt; max-height: 23px;">Segera Melakukan Pembayaran</span>
+                            @elseif ($p->status == 'Menunggu Validasi Pembayaran')
+                                <span class="badge badge-outline-primary my-auto" style="font-size:8pt; max-height: 23px;">Menunggu Validasi Pembayaran</span>
+                            @elseif ($p->status == 'Segera Melakukan Daftar Ulang')
+                                <span class="badge badge-outline-primary my-auto" style="font-size:8pt; max-height: 23px;">Segera Melakukan Daftar Ulang</span>
+                            @elseif ($p->status == 'Pengumuman')
                                 <span class="badge badge-outline-primary my-auto" style="font-size:8pt; max-height: 23px;">Pengumuman</span>
+                            @elseif ($p->status == 'Diterima')
+                              <span class="badge badge-outline-primary my-auto" style="font-size:8pt; max-height: 23px;">Diterima</span>
+                            @elseif ($p->status == 'Tidak Diterima')
+                              <span class="badge badge-outline-primary my-auto" style="font-size:8pt; max-height: 23px;">Tidak Diterima</span>
                             @endif
+
+                            &nbsp;
+
+                              <span class="badge
+                              @if($p->status == 'Menunggu Validasi Pembayaran')
+                                badge-warning
+                              @elseif($p->status == 'Segera Melakukan Pembayaran')
+                                badge-danger
+                              @else
+                                badge-success
+                              @endif
+                              my-auto" style="font-size:8pt; max-height: 23px;">$</span>
 
                             <div class="ml-auto text-right">
                                 <div class="btn-group btn-group-sm">
@@ -295,22 +319,57 @@
                             {{-- </div> --}}
 
                             <div class="form-group">
-                                <b><div style="font-size: 10pt;" class="text-primary">Ubah status <span class="text-danger">*</span></div></b>
+                                <b><div style="font-size: 10pt;" class="text-primary">Status Pendaftaran <span class="text-danger">*</span></div></b>
                                 <select class="custom-select" name="status">
-                                    <option value="pembayaran" @if($p->status == 'pembayaran') selected @endif>Pembayaran</option>
-                                    <option value="daftar ulang" @if($p->status == 'daftar ulang') selected @endif>Daftar Ulang</option>
-                                    <option value="pengumuman" @if($p->status == 'pengumuman') selected @endif>Pengumuman</option>
-                                    <option value="lulus" @if($p->status == 'lulus') selected @endif>Lulus</option>
-                                    <option value="tidak lulus" @if($p->status == 'tidak lulus') selected @endif>Tidak Lulus</option>
+                                    <option value="Segera Melakukan Pembayaran" @if($p->status == 'Segera Melakukan Pembayaran') selected @endif>Segera Melakukan Pembayaran</option>
+                                    <option value="Menunggu Validasi Pembayaran" @if($p->status == 'Menunggu Validasi Pembayaran') selected @endif>Menunggu Validasi Pembayaran</option>
+                                    <option value="Segera Melakukan Daftar Ulang" @if($p->status == 'Segera Melakukan Daftar Ulang') selected @endif>Segera Melakukan Daftar Ulang</option>
+                                    <option value="Pengumuman" @if($p->status == 'Pengumuman') selected @endif>Pengumuman</option>
+                                    <option value="Diterima" @if($p->status == 'Diterima') selected @endif>Diterima</option>
+                                    <option value="Tidak Diterima" @if($p->status == 'Tidak Diterima') selected @endif>Tidak Diterima</option>
                                 </select>
                             </div>
                             
+                            <div class="form-group">
+                              <b><div style="font-size: 10pt;" class="text-primary">Tinggi Badan</div></b>
+                            <input type="number" class="form-control" name="tinggi_badan" value="{{$p->tinggi_badan}}">							
+                            </div>
+
+                            <div class="form-group">
+                              <b><div style="font-size: 10pt;" class="text-primary">Berat Badan</div></b>
+                              <input type="number" class="form-control" name="berat_badan" value="{{$p->berat_badan}}">							
+                            </div>
+
+                            <div class="form-group">
+                              <b><div style="font-size: 10pt;" class="text-primary">Buta Warna?</div></b>
+                              <select class="custom-select" name="buta_warna">
+                                  <option value="" @if($p->buta_warna == '') selected @endif></option>
+                                  <option value="ya" @if($p->buta_warna == 'ya') selected @endif>Ya</option>
+                                  <option value="tidak" @if($p->buta_warna == 'tidak') selected @endif>Tidak</option>
+                              </select>
+                            </div>
+
                             <hr>
-                            
-                            <a href="/cetak/{{ Hashids::encode($p->id) }}" class="btn btn-primary" target="_blank">
+                            <br>
+
+                            <a href="/cetak/{{ Hashids::encode($p->id) }}" class="btn btn-primary mb-2" target="_blank">
                                 <i class="fas fa-download"></i>
-                                &nbsp; Lihat Formulir
+                                &nbsp; Formulir
                             </a>
+
+                            @if($p->bukti_pembayaran)
+                            <a href="/storage/{{ $p->bukti_pembayaran }}" class="btn btn-warning mb-2" target="_blank">
+                              <i class="fas fa-download"></i>
+                              &nbsp; Bukti Pembayaran
+                            </a>
+                            @endif
+
+                            @if($p->status == "Diterima")
+                              <a href="/suratpengumuman/{{ Hashids::encode($p->id) }}" class="btn btn-warning mb-2" target="_blank">
+                                <i class="fas fa-download"></i>
+                                &nbsp; Surat Pengumuman
+                              </a>
+                            @endif
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Batal</button>
@@ -321,17 +380,46 @@
                 </div>
               </div>
               
+              
                         @endforeach
                     </ul>
                   </div>
-                  <div class="card-footer border-top">
+                  <div class="card-footer bg-dark text-white border-top" style="font-size: 9pt;">
+                    <span class="badge badge-danger my-auto" style="font-size:8pt; max-height: 23px;">$</span> = Belum Membayar &nbsp; &nbsp;
+                    <span class="badge badge-warning my-auto" style="font-size:8pt; max-height: 23px;">$</span> = Menunggu Validasi &nbsp; &nbsp;
+                    <span class="badge badge-success my-auto" style="font-size:8pt; max-height: 23px;">$</span> = Sudah Membayar
                   </div>                  
                 </div>
                 
                 
             </div>
             <!-- End Top Referrals Component -->
+
+
+              <!-- Users Stats -->
+              <canvas height="130" style="max-width: 100% !important;" class="blog-overview-users" hidden></canvas>
+
+              <!-- End Users Stats -->
+
+            <!-- Users By Device Stats -->
+
+              <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
+                <div class="card card-small h-100">
+                  <div class="card-header border-bottom">
+                    <h6 class="m-0">Data Jurusan</h6>
+                  </div>
+                  <div class="card-body d-flex py-0">
+                    <canvas height="220" class="blog-users-by-device m-auto"></canvas>
+                  </div>
+                </div>
+              </div>
+            <!-- End Users By Device Stats -->
         </div>    
+
+        <input type="text" value="{{$totalOtomatisasiTataKelolaPerkantoran}}" id="totalOtomatisasiTataKelolaPerkantoran" hidden>
+        <input type="text" value="{{$totalMultimedia}}" id="totalMultimedia" hidden>
+        <input type="text" value="{{$totalTataKelolaKecantikanKulitdanRambut}}" id="totalTataKelolaKecantikanKulitdanRambut" hidden>
+        <input type="text" value="{{$totalKeperawatan}}" id="totalKeperawatan" hidden>
 
 
         {{ $pendaftar->links('vendor.pagination.bootstrap-4') }}
@@ -384,22 +472,57 @@
                             {{-- </div> --}}
 
                             <div class="form-group">
-                                <b><div style="font-size: 10pt;" class="text-primary">Ubah status <span class="text-danger">*</span></div></b>
+                                <b><div style="font-size: 10pt;" class="text-primary">Status Pendaftaran <span class="text-danger">*</span></div></b>
                                 <select class="custom-select" name="status">
-                                    <option value="pembayaran" @if(session('pendaftar')['status'] == 'pembayaran') selected @endif>Pembayaran</option>
-                                    <option value="daftar ulang" @if(session('pendaftar')['status'] == 'daftar ulang') selected @endif>Daftar Ulang</option>
-                                    <option value="pengumuman" @if(session('pendaftar')['status'] == 'pengumuman') selected @endif>Pengumuman</option>
-                                    <option value="lulus" @if(session('pendaftar')['status'] == 'lulus') selected @endif>Lulus</option>
-                                    <option value="tidak lulus" @if(session('pendaftar')['status'] == 'tidak lulus') selected @endif>Tidak Lulus</option>
+                                    <option value="Segera Melakukan Pembayaran" @if(session('pendaftar')['status'] == 'Segera Melakukan Pembayaran') selected @endif>Segera Melakukan Pembayaran</option>
+                                    <option value="Menunggu Validasi Pembayaran" @if(session('pendaftar')['status'] == 'Menunggu Validasi Pembayaran') selected @endif>Menunggu Validasi Pembayaran</option>
+                                    <option value="Segera Melakukan Daftar Ulang" @if(session('pendaftar')['status'] == 'Segera Melakukan Daftar Ulang') selected @endif>Segera Melakukan Daftar Ulang</option>
+                                    <option value="Pengumuman" @if(session('pendaftar')['status'] == 'Pengumuman') selected @endif>Pengumuman</option>
+                                    <option value="Diterima" @if(session('pendaftar')['status'] == 'Diterima') selected @endif>Diterima</option>
+                                    <option value="Tidak Diterima" @if(session('pendaftar')['status'] == 'Tidak Diterima') selected @endif>Tidak Diterima</option>
                                 </select>
                             </div>
                             
+                            <div class="form-group">
+                              <b><div style="font-size: 10pt;" class="text-primary">Tinggi Badan</div></b>
+                            <input type="number" class="form-control" name="tinggi_badan" value="{{session('pendaftar')['tinggi_badan']}}">							
+                            </div>
+
+                            <div class="form-group">
+                              <b><div style="font-size: 10pt;" class="text-primary">Berat Badan</div></b>
+                              <input type="number" class="form-control" name="berat_badan" value="{{session('pendaftar')['berat_badan']}}">							
+                            </div>
+
+                            <div class="form-group">
+                              <b><div style="font-size: 10pt;" class="text-primary">Buta Warna?</div></b>
+                              <select class="custom-select" name="buta_warna">
+                                  <option value="" @if(session('pendaftar')['buta_warna'] == '') selected @endif></option>
+                                  <option value="ya" @if(session('pendaftar')['buta_warna'] == 'ya') selected @endif>Ya</option>
+                                  <option value="tidak" @if(session('pendaftar')['buta_warna'] == 'tidak') selected @endif>Tidak</option>
+                              </select>
+                            </div>
+
                             <hr>
-                            
-                            <a href="/cetak/{{ Hashids::encode(session('pendaftar')['id']) }}" class="btn btn-primary" target="_blank">
+                            <br>
+
+                            <a href="/cetak/{{ Hashids::encode(session('pendaftar')['id']) }}" class="btn btn-primary mb-2" target="_blank">
                                 <i class="fas fa-download"></i>
-                                &nbsp; Lihat Formulir
+                                &nbsp; Formulir
                             </a>
+
+                            @if(session('pendaftar')['bukti_pembayaran'])
+                            <a href="/storage/{{ session('pendaftar')['bukti_pembayaran'] }}" class="btn btn-warning mb-2" target="_blank">
+                              <i class="fas fa-download"></i>
+                              &nbsp; Bukti Pembayaran
+                            </a>
+                            @endif
+
+                            @if(session('pendaftar')['status'] == "Diterima")
+                              <a href="/suratpengumuman/{{ Hashids::encode(session('pendaftar')['id']) }}" class="btn btn-warning mb-2" target="_blank">
+                                <i class="fas fa-download"></i>
+                                &nbsp; Surat Pengumuman
+                              </a>
+                            @endif
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Batal</button>

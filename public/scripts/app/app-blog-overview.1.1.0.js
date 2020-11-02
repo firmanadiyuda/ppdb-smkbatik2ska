@@ -227,14 +227,26 @@
     var ubdData = {
       datasets: [{
         hoverBorderColor: '#ffffff',
-        data: [68.3, 24.2, 7.5],
+        data: [
+          document.getElementById('totalOtomatisasiTataKelolaPerkantoran').value,
+          document.getElementById('totalMultimedia').value,
+          document.getElementById('totalTataKelolaKecantikanKulitdanRambut').value,
+          document.getElementById('totalKeperawatan').value,
+        ],
+
         backgroundColor: [
           'rgba(0,123,255,0.9)',
           'rgba(0,123,255,0.5)',
-          'rgba(0,123,255,0.3)'
+          'rgba(0,123,255,0.3)',
+          'rgba(0,123,255,0.3)',
         ]
       }],
-      labels: ["Desktop", "Tablet", "Mobile"]
+      labels: [
+        "Otomatisasi Tata Kelola Perkantoran",
+        "Multimedia",
+        "Tata Kelola Kecantikan Kulit dan Rambut",
+        "Keperawatan"
+      ]
     };
 
     // Options

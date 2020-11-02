@@ -25,19 +25,31 @@ class HomeController extends Controller
     public function index()
     {
         $totalPendaftar = Pendaftar::all()->count();
-        $totalPembayaran = Pendaftar::where('status', 'daftar ulang')->count();
-        $totalDaftarUlang = Pendaftar::where('status', 'pengumuman')->count();
-        $totalLulus = Pendaftar::where('status', 'lulus')->count();
-        $totalTidakLulus = Pendaftar::where('status', 'tidak lulus')->count();
+        $totalMenungguValidasi = Pendaftar::where('status', 'Menunggu Validasi Pembayaran')->count();
+        $totalBelumDaftarUlang = Pendaftar::where('status', 'Segera Melakukan Daftar Ulang')->count();
+        $totalDiterima = Pendaftar::where('status', 'Diterima')->count();
+        $totalTidakDiterima = Pendaftar::where('status', 'Tidak Diterima')->count();
+
+        $totalOtomatisasiTataKelolaPerkantoran = Pendaftar::where('jurusan', 'Otomatisasi Tata Kelola Perkantoran')->count();
+        $totalMultimedia = Pendaftar::where('jurusan', 'Multimedia')->count();
+        $totalTataKelolaKecantikanKulitdanRambut = Pendaftar::where('jurusan', 'Tata Kelola Kecantikan Kulit dan Rambut')->count();
+        $totalKeperawatan = Pendaftar::where('jurusan', 'Keperawatan')->count();
+
 
         $pendaftar = Pendaftar::paginate(20);
         return view('dashboard')->with([
             'totalPendaftar' => $totalPendaftar,
-            'totalPembayaran' => $totalPembayaran,
-            'totalDaftarUlang' => $totalDaftarUlang,
-            'totalLulus' => $totalLulus,
-            'totalTidakLulus' => $totalTidakLulus,
-            'pendaftar' => $pendaftar
+            'totalMenungguValidasi' => $totalMenungguValidasi,
+            'totalBelumDaftarUlang' => $totalBelumDaftarUlang,
+            'totalDiterima' => $totalDiterima,
+            'totalTidakDiterima' => $totalTidakDiterima,
+            'pendaftar' => $pendaftar,
+
+            'totalOtomatisasiTataKelolaPerkantoran' => $totalOtomatisasiTataKelolaPerkantoran,
+            'totalMultimedia' => $totalMultimedia,
+            'totalTataKelolaKecantikanKulitdanRambut' => $totalTataKelolaKecantikanKulitdanRambut,
+            'totalKeperawatan' => $totalKeperawatan
+
             ]);
     }
 }

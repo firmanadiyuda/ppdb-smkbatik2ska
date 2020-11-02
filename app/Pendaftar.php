@@ -33,6 +33,8 @@ class Pendaftar extends Model
         'nilai_bahasa_indonesia',
         'nilai_matematika',
         'nilai_bahasa_inggris',
-        'nilai_ipa'
+        'nilai_ipa',
+
+        'jurusan'
     ];
 }

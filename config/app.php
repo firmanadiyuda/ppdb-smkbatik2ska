@@ -175,8 +175,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
-        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class
-
+        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
 
     ],
 
@@ -232,6 +232,7 @@ return [
         'Hashids' => Vinkla\Hashids\Facades\Hashids::class,
         'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
         'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
 
     ],

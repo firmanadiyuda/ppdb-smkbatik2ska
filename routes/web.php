@@ -34,10 +34,23 @@ Route::get('/cekstatus', 'ProsesDataController@cekstatus');
 Route::get('/status/{kode}', 'ProsesDataController@status');
 
 Route::post('/updatestatus', 'ProsesDataController@updatestatus')->middleware(['auth']);
+Route::get('/cetakexcel', 'ProsesDataController@cetakexcel')->middleware(['auth']);
+
 Route::get('/cari', 'ProsesDataController@cari');
 
 Route::get('/cetak/{kode}', 'ProsesDataController@cetak');
+Route::get('/suratpengumuman/{kode}', 'ProsesDataController@suratpengumuman');
+
+Route::post('/uploadbuktipembayaran', 'ProsesDataController@uploadbuktipembayaran');
 
 Auth::routes(['register' => false]);
 
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+
+// Route::get('migrate', function () {
+
+//     \Artisan::call('migrate:refresh --seed');
+
+//     dd("Database migrated");
+
+// });

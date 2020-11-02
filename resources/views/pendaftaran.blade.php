@@ -18,7 +18,7 @@
 <body style="background-color: #E9ECEF; font-family: Poppins;">
 
 	<div class="w-100 bg-primary text-center pt-5 pb-5 mb-5">
-		<h1 class=" text-warning" style="font-weight: 100;">PPDB ONLINE</h1>
+		<h1 class=" text-light" style="font-weight: 100;">PPDB ONLINE</h1>
 		<a href="/">
 			<h2 class=" text-white" style="font-weight: 600; font-size:20pt;">SMK Batik 2 Surakarta</h2>
 		</a>
@@ -29,10 +29,8 @@
 		@csrf
 
 		<div class="card mb-5">
+			<div class="card-header bg-light text-center"><b>Identitas Diri</b></div>
 			<div class="card-body">
-
-				<h4 class="card-title">Identitas Diri</h4>
-				<hr>
 
 				<div class="row">
 					<div class="col-12">
@@ -42,15 +40,15 @@
 						</div>
 
 						<div class="form-group">
-							<b><div style="font-size: 10pt;" class="text-primary">NISN <span class="text-danger">*</span></div></b>
-							<input type="text" class="form-control" name="nisn" required>							
+							<b><div style="font-size: 10pt;" class="text-primary">NISN </div></b>
+							<input type="number" class="form-control" name="nisn">							
 						</div>
 
 						<div class="form-group">
 							<b><div style="font-size: 10pt;" class="text-primary">Jenis Kelamin <span class="text-danger">*</span></div></b>
 							<select class="custom-select" name="jenis_kelamin">
-								<option value="1">Laki - Laki</option>
-								<option value="0">Perempuan</option>
+								<option value="Laki - Laki">Laki - Laki</option>
+								<option value="Perempuan">Perempuan</option>
 							</select>
 						</div>
 
@@ -89,10 +87,8 @@
 
 
 	<div class="card mb-5">
+		<div class="card-header bg-light text-center"><b>Identitas Orang Tua</b></div>
 		<div class="card-body">
-
-			<h4 class="card-title">Identitas Orang Tua</h4>
-			<hr>
 
 			<div class="row">
 				<div class="col-12">
@@ -147,11 +143,10 @@
 
 
 
-	<div class="card">
-		<div class="card-body">
+	<div class="card mb-5">
+		<div class="card-header bg-light text-center"><b>Asal Sekolah</b></div>
 
-			<h4 class="card-title">Asal Sekolah</h4>
-			<hr>
+		<div class="card-body">
 
 			<div class="row">
 				<div class="col-12">
@@ -191,6 +186,30 @@
 
 		</div>
 	</div>
+
+
+	<div class="card">
+		<div class="card-header bg-light text-center"><b>Jurusan</b></div>
+
+		<div class="card-body">
+
+			<div class="row">
+				<div class="col-12">
+					<div class="form-group">
+						<b><div style="font-size: 10pt;" class="text-primary">Jurusan yang dipilih <span class="text-danger">*</span></div></b>
+						<select class="custom-select" name="jurusan">
+							<option value="Otomatisasi Tata Kelola Perkantoran">Otomatisasi Tata Kelola Perkantoran</option>
+							<option value="Multimedia">Multimedia</option>
+							<option value="Tata Kelola Kecantikan Kulit dan Rambut">Tata Kelola Kecantikan Kulit dan Rambut</option>
+							<option value="Keperawatan">Keperawatan</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
 
 	<button type="button" class="btn btn-primary btn-lg mt-4 w-100" data-toggle="modal" data-target="#konfirmasi">
 		DAFTAR

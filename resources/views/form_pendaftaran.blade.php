@@ -47,7 +47,16 @@
 
   <table width=100% style="text-align: center; margin-bottom:-10px;">
     <tr>
-      <td width=20%></td>
+      <td width=22%>
+        <table border=1px width=100% height=100%>
+          <tr style="text-align: center;">
+            <td style="font-size: 12px; text-align: center;"><b>NO. PENDAFTARAN</b></td>
+          </tr>
+          <tr style="height: 100%; text-align: center;">
+          <td style="font-size: 30px; background: white; color: black; text-align: center;"><b>{{$pendaftar->id}}</b></td>
+          </tr>
+        </table>
+      </td>
       <td width=60%>
         <b>  
           <p style="font-size: 13px; line-height: 18px; margin-top: 0px;">
@@ -57,10 +66,10 @@
           TAHUN PELAJARAN 2020/2021</p>
         </b>
       </td>
-      <td width=25%>
+      <td width=23%>
         <table border=1px width=100% height=100%>
           <tr style="text-align: center;">
-            <td style="font-size: 12px; text-align: center;"><b>KODE PENDAFTARAN</b></td>
+            <td style="font-size: 12px; text-align: center;"><b>KODE LOGIN</b></td>
           </tr>
           <tr style="height: 100%; text-align: center;">
           <td style="font-size: 30px; background:#333333; color: white; text-align: center;"><b>{{$kode}}</b></td>
@@ -71,6 +80,9 @@
   </table>
 
   <hr style="border-width: 0.5px;" color="grey">
+  <div style="width: 100%; font-size: 15pt; text-align:right;">
+    <b>{{$pendaftar->jurusan}}</b>
+  </div>
 
   {{-- <table width=100% style="margin-top: 20px;">
     <tr bgcolor=#333333 style="color: white;">
@@ -114,11 +126,7 @@
         :
       </td>
       <td>
-        @if($pendaftar['jenis_kelamin'] == 1)
-          Laki - Laki
-        @else
-          Perempuan
-        @endif
+        {{ $pendaftar['jenis_kelamin'] }}
       </td>
     </tr>
 
@@ -193,34 +201,25 @@
 
     <table width=100% style="text-align: center; border: 1px solid black; border-collapse: collapse;">
       <tr>
-        <td style="border: 1px solid black;">NO</td>
-        <td style="border: 1px solid black;">MATA UJIAN</td>
-        <td style="border: 1px solid black;">NILAI</td>
-      </tr>
-      
-      <tr>
-        <td style="border: 1px solid black;">1</td>
-        <td style="text-align: left; border: 1px solid black;">Bahasa Indonesia</td>
-        <td style="border: 1px solid black;">{{ $pendaftar['nilai_bahasa_indonesia'] }}</td>
+        <td style="text-align: center; border: 1px solid black;">Bahasa Indonesia</td>
+
+        <td style="text-align: center; border: 1px solid black;">Matematika</td>
+
+        <td style="text-align: center; border: 1px solid black;">Bahasa Inggris</td>
+
+        <td style="text-align: center; border: 1px solid black;">IPA</td>
       </tr>
 
       <tr>
-        <td style="border: 1px solid black;">2</td>
-        <td style="text-align: left; border: 1px solid black;">Matematika</td>
-        <td style="border: 1px solid black;">{{ $pendaftar['nilai_matematika'] }}</td>
+        <td style="border: 1px solid black;">@if($pendaftar['nilai_bahasa_indonesia']) {{ $pendaftar['nilai_bahasa_indonesia'] }} @else &nbsp; &nbsp; @endif</td>
+
+        <td style="border: 1px solid black;">@if($pendaftar['nilai_matematika']) {{ $pendaftar['nilai_matematika'] }} @else &nbsp; &nbsp; @endif</td>
+
+        <td style="border: 1px solid black;">@if($pendaftar['nilai_bahasa_inggris']) {{ $pendaftar['nilai_bahasa_inggris'] }} @else &nbsp; &nbsp; @endif</td>
+
+        <td style="border: 1px solid black;">@if($pendaftar['nilai_ipa']) {{ $pendaftar['nilai_ipa'] }} @else &nbsp; &nbsp; @endif</td>
       </tr>
 
-      <tr>
-        <td style="border: 1px solid black;">3</td>
-        <td style="text-align: left; border: 1px solid black;">Bahasa Inggris</td>
-        <td style="border: 1px solid black;">{{ $pendaftar['nilai_bahasa_inggris'] }}</td>
-      </tr>
-
-      <tr>
-        <td style="border: 1px solid black;">4</td>
-        <td style="text-align: left; border: 1px solid black;">IPA</td>
-        <td style="border: 1px solid black;">{{ $pendaftar['nilai_ipa'] }}</td>
-      </tr>
     </table>
   </table>
 
@@ -330,10 +329,75 @@
       {{ $pendaftar['alamat_wali'] }}
     </td>
   </tr>
+</table>
+
+<table>
+
+  <tr style="vertical-align: top;">
+    <td>
+      <b>Berat Badan</b>
+    </td>
+    <td>
+      <table style="border-collapse: collapse;">
+        <tr>
+          <td style="text-align: left; border: 1px solid black;">
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          </td>
+          <td>
+            &nbsp;cm
+          </td>
+          
+        </tr>
+      </table>
+    </td>
+
+    <td width=60px style="text-align: center">
+    |
+    </td>
+
+    <td>
+      <b>Tinggi Badan</b>
+    </td>
+    <td>
+      <table style="border-collapse: collapse;">
+        <tr>
+          <td style="text-align: left; border: 1px solid black;">
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          </td>
+          <td>
+            &nbsp;cm
+          </td>
+          
+        </tr>
+      </table>
+    </td>
+
+    <td width=60px style="text-align: center">
+      |
+      </td>
+  
+      <td>
+        <b>Buta Warna?</b>
+      </td>
+      <td>
+        <table style="border-collapse: collapse;">
+          <tr>
+            <td style="text-align: left; border: 1px solid black;">
+              Ya
+            </td>
+            <td style="text-align: left; border: 1px solid black;">
+              Tidak
+            </td>
+            
+          </tr>
+        </table>
+      </td>
+
+  </tr>
 
 </table>
 
-<table width=100% style="margin-top: 15px;">
+<table width=100% style="margin-top: 15px; ; margin-bottom: 10px;">
   <tr style="vertical-align: top;">
     <td width=180px>
     </td>
@@ -350,6 +414,17 @@
         </tr>
       </table>
     </td>
+
+    <td style="text-align: center;">
+      Paraf Validasi, 
+      <br>
+      <br>
+      <br>
+      <br>
+      <hr>
+      Diisi oleh panitia
+    </td>
+
     <td style="text-align: center;">
       <b>
         Surakarta, {{date("d-m-Y")}} <br>
@@ -365,7 +440,7 @@
 </table>
 
 <b><i><u>Catatan:</u></i></b> <br>
-Formulir setelah diisi supaya dikembalikan kepada Panitia Peserta Didik Baru dan dilampiri :
+Formulir setelah dicetak supaya dikembalikan kepada Panitia Peserta Didik Baru dan dilampiri :
 <ol>
   <li>Fotocopy STTB SMP/MTs yang telah disahkan oleh Kepala Sekolah</li>
   <li>STK/DANEM Asli/Fotocopy yang telah disahkan oleh Kepala Sekolah</li>

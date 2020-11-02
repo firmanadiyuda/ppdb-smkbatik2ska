@@ -16,8 +16,8 @@ class BuatTabelPendaftar extends Migration
         Schema::create('pendaftar', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nama_siswa');
-            $table->bigInteger('nisn');
-            $table->boolean('jenis_kelamin');
+            $table->bigInteger('nisn')->nullable();
+            $table->string('jenis_kelamin');
             $table->string('tempat_lahir', 255);
             $table->date('tanggal_lahir');
             $table->string('agama', 255);
@@ -41,10 +41,20 @@ class BuatTabelPendaftar extends Migration
             $table->float('nilai_bahasa_inggris')->nullable();
             $table->float('nilai_ipa')->nullable();
 
-            $table->string('status', 255)->default('pembayaran');
+            $table->string('status', 255)->default('Segera Melakukan Pembayaran');
+            $table->string('jurusan', 255);
             
+            $table->bigInteger('tinggi_badan')->nullable();
+            $table->bigInteger('berat_badan')->nullable();
+            $table->string('buta_warna')->nullable();
+
+            $table->string('bukti_pembayaran')->nullable();
+
             $table->timestamps();
         });
+
+        DB::statement("ALTER TABLE pendaftar AUTO_INCREMENT = 100;");
+
     }
 
     /**
