@@ -41,7 +41,7 @@ class PendaftarJurusanExport implements FromCollection, WithTitle, ShouldAutoSiz
     {
         return [
             AfterSheet::class    => function(AfterSheet $event) {
-                $cellRange = 'A1:J1'; // All headers
+                $cellRange = 'A1:M1'; // All headers
                 $event->sheet->getDelegate()->getStyle($cellRange)->getFont()->setSize(14);
                 $event->sheet->getDelegate()->getStyle($cellRange)->getFont()->setBold('bold');
             },
@@ -55,6 +55,9 @@ class PendaftarJurusanExport implements FromCollection, WithTitle, ShouldAutoSiz
             'nama_siswa',
             'jenis_kelamin',
             'tanggal_lahir',
+            'tinggi_badan',
+            'berat_badan',
+            'buta_warna',
             'nilai_uan',
             'nilai_bahasa_indonesia',
             'nilai_matematika',
@@ -80,6 +83,9 @@ class PendaftarJurusanExport implements FromCollection, WithTitle, ShouldAutoSiz
             "Nama Siswa",
             "Jenis Kelamin",
             "Tanggal Lahir",
+            "Tinggi Badan",
+            "Berat Badan",
+            "Buta Warna",
             "Nilai UAN",
             "Nilai Bahasa Indonesia",
             "Nilai Matematika",
