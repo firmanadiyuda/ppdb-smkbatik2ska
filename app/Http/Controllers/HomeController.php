@@ -36,7 +36,7 @@ class HomeController extends Controller
         $totalKeperawatan = Pendaftar::where('jurusan', 'Keperawatan')->count();
 
 
-        $pendaftar = Pendaftar::paginate(20);
+        $pendaftar = Pendaftar::orderBy('created_at', 'DESC')->paginate(20);
         return view('dashboard')->with([
             'totalPendaftar' => $totalPendaftar,
             'totalMenungguValidasi' => $totalMenungguValidasi,
